@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Next Mourning</title>
+    <title>The Next Mourning - Merch</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,54 +36,26 @@
         }
 
         .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            max-width: 100%; /* Set maximum width */
+            margin: 0 auto; /* Center horizontally */
+            padding: 20px; /* Add padding */
+            box-sizing: border-box; /* Include padding in max width calculation */
+            height: 600px; /* Set container height */
+            overflow: hidden; /* Hide overflow content */
+            position: relative; /* Make the container relative for absolute positioning */
         }
 
-        .box {
-            margin: 20px;
-            text-align: center;
-            width: 250px;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* CSS to ensure embedded site fits within container */
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove iframe border */
         }
 
-        .box img {
-            width: 300px; /* Increased image width */
-            height: auto;
-            object-fit: fill;
+        /* CSS to disable pointer events for images within the iframe */
+        iframe img {
+            pointer-events: none;
         }
-
-        .tiny-boxes {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .tiny-box {
-            width: 50px;
-            height: 50px;
-            background-size: cover;
-            background-position: center;
-            margin: 0 5px; /* Adjusted margin */
-            animation: bounce 1s ease forwards;
-            opacity: 0;
-        }
-
-        @keyframes bounce {
-            0% {
-                opacity: 0;
-                transform: translateY(-100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
     </style>
 </head>
 
@@ -100,58 +72,10 @@
         </nav>
     </header>
 
-    <div style="max-width: 1040px; margin: 0 auto;">
-        <div>
-        <a class="anchor" id="fitPrintAnchor" style="padding-top: 0px; margin-top: 0px;"></a>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-          iFrameResize(
-          {
-            log: false,
-            checkOrigin: false,
-            heightCalculationMethod: 'grow',
-            autoResize: false,
-            onMessage: function(messageData) {
-              var jsonData = JSON.parse(messageData.message);
-              if (jsonData.action == 'navigateTo') {
-                window.onbeforeunload = null;
-                window.parent.location.href= jsonData.data;
-              }
-              if (jsonData.action == 'scrollTo') {
-                setTimeout(function () {
-                  document.getElementById('fitPrintAnchor').scrollIntoView({behavior: 'smooth', block: 'center'});
-                },200);
-              }
-        },
-            onInit: function(iframe)
-            {
-              $(document).ready(function()
-              {
-  iframe.iFrameResizer = {
-                $(window).on('scroll', () =>
-                {
-                  const scrollFromTop = $(document).scrollTop();
-                  var fitPrintIframe = $("#fitPrintIframe");
-                  var offset = fitPrintIframe.offset();
-                  if (scrollFromTop > offset.top + 10)
-                  {
-                    iframe.iFrameResizer.sendMessage(scrollFromTop - (offset.top - 10));
-                  }
-                });
-              });
-            }
-          }, '#fitPrintIframe');
-        </script>
-        <br>
-        <iframe id="fitPrintIframe" frameborder="0" scrolling="no" src="https://shop.fitprint.io/v2.html?shop=ce08f6a1-70e6-4e59-9a30-a06bd9953813" width="100%" onload="iFrameResize({ log: false, checkOrigin: false, heightCalculationMethod: 'grow', autoResize: false, onMessage: function(messageData) {var jsonData = JSON.parse(messageData.message);if (jsonData.action == 'navigateTo') {window.onbeforeunload = null;window.parent.location.href= jsonData.data;}if (jsonData.action == 'scrollTo') {setTimeout(function () {document.getElementById('fitPrintAnchor').scrollIntoView({behavior: 'smooth', block: 'center'});},200);}},onInit: function(iframe) { $(document).ready(function () { $(window).on('scroll', () => { const scrollFromTop = $(document).scrollTop(); var fitPrintIframe = $('#fitPrintIframe'); var offset = fitPrintIframe.offset(); if (scrollFromTop > offset.top + 10) { iframe.iFrameResizer.sendMessage(scrollFromTop - (offset.top - 10)); }if (scrollFromTop == 0 ) { iframe.iFrameResizer.sendMessage(scrollFromTop); }  }); }); }}, '#fitPrintIframe');"></iframe>
-        <style>
-          iframe {
-            width: 1px; min-width: 100%;
-          }
-        </style>
-        </div>
-      </div>
+    <div class="container">
+        <!-- Embedded site (replace the src attribute with your embedded site URL) -->
+        <iframe src="https://shop.fitprint.io/v2.html?shop=ce08f6a1-70e6-4e59-9a30-a06bd9953813" frameborder="0" scrolling="no" width="100%" height="600px"></iframe>
+    </div>
 </body>
 
 </html>
