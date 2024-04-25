@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: black;
-            color: rgb(0, 0, 0);
+            color: white;
         }
 
         header {
@@ -32,13 +31,16 @@
             margin: 0 20px;
             text-decoration: none;
             font-family: Allura, cursive;
-            font-size: 20px; /* Adjusted font size */
+            font-size: 20px; 
         }
 
         .container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
+            max-width: 100%; /* Set maximum width */
+            margin: 0 auto; /* Center horizontally */
+            overflow: hidden; /* Hide horizontal overflow */
         }
 
         .box {
@@ -52,9 +54,9 @@
         }
 
         .box img {
-            width: 300px; /* Increased image width */
+            width: 100%; /* Make image responsive */
             height: auto;
-            object-fit: fill;
+            object-fit: cover;
         }
 
         .tiny-boxes {
@@ -68,9 +70,8 @@
             height: 50px;
             background-size: cover;
             background-position: center;
-            margin: 0 5px; /* Adjusted margin */
+            margin: 0 5px; 
             animation: bounce 1s ease forwards;
-            opacity: 0;
         }
 
         @keyframes bounce {
@@ -83,19 +84,8 @@
                 transform: translateY(0);
             }
         }
-
-        /* New styles for responsiveness */
-        body {
-            overflow-x: hidden; /* Disable horizontal scrolling */
-        }
-
-        .container {
-            max-width: 100%; /* Set maximum width */
-            margin: 0 auto; /* Center horizontally */
-        }
     </style>
 </head>
-
 <body>
     <header>
         <div>
@@ -112,7 +102,6 @@
     <div class="container">
         <div class="box">
             <img src="images/DemoSandwich.jpg" alt="Demo Sandwich">
-            <p>Music</p>
             <div class="tiny-boxes">
                 <a href="https://music.apple.com/us/artist/the-next-mourning/1739442714"><div class="tiny-box" style="background-image: url('images/itunes.png')"></div></a>
                 <a href="https://open.spotify.com/artist/5blvdRl8GgqNtnM3y6FIoo?utm_medium=share&utm_source=linktree"><div class="tiny-box" style="background-image: url('images/spotify.png')"></div></a>
@@ -123,5 +112,4 @@
         </div>
     </div>
 </body>
-
 </html>
